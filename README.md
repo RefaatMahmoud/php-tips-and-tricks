@@ -127,3 +127,28 @@ C::test();
 ```
 A C C
 ```
+### (3) Dierence between __CLASS__, get_class() and get_called_class()
+__CLASS__ magic constant returns the same result as get_class() function called without parameters and they
+both return the name of the class where it was defined (i.e. where you wrote the function call/constant name ).
+In contrast, get_class($this) and get_called_class() functions call, will both return the name of the actual class
+which was instantiated:
+```php
+<?php
+class Definition_Class {
+public function say(){
+echo '__CLASS__ value: ' . __CLASS__ . "\n";
+echo 'get_called_class() value: ' . get_called_class() . "\n";
+echo 'get_class($this) value: ' . get_class($this) . "\n";
+echo 'get_class() value: ' . get_class() . "\n";
+}
+}
+class Actual_Class extends Definition_Class {}
+$c = new Actual_Class();
+$c->say();
+```
+**Output**
+```
+__CLASS__ value: Definition_Class
+get_called_class() value: Actual_Class
+get_class($this) value: Actual_Class
+get_class() value: Definition_Class
