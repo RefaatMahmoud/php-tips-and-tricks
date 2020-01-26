@@ -29,7 +29,7 @@ function getForEachLoopTime($units)
 }
 
 
-// while loop performance
+// while loop performanceAc
 function getWhileLoopTime($units){
     $startingTime = microtime(true);
     $i = 0;
@@ -136,15 +136,16 @@ which was instantiated:
 <?php
 class Definition_Class {
 public function say(){
-echo '__CLASS__ value: ' . __CLASS__ . "\n";
-echo 'get_called_class() value: ' . get_called_class() . "\n";
-echo 'get_class($this) value: ' . get_class($this) . "\n";
-echo 'get_class() value: ' . get_class() . "\n";
+echo '__CLASS__ value: ' . __CLASS__ . "<br>";
+echo 'get_called_class() value: ' . get_called_class() . "<br>";
+echo 'get_class($this) value: ' . get_class($this) . "<br>";
+echo 'get_class() value: ' . get_class() . "<br>";
 }
 }
 class Actual_Class extends Definition_Class {}
 $c = new Actual_Class();
 $c->say();
+echo (new \ReflectionClass($c))->getShortName();
 ```
 **Output**
 ```
@@ -152,3 +153,4 @@ __CLASS__ value: Definition_Class
 get_called_class() value: Actual_Class
 get_class($this) value: Actual_Class
 get_class() value: Definition_Class
+Actual_Class
