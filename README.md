@@ -153,4 +153,4 @@ __CLASS__ value: Definition_Class
 get_called_class() value: Actual_Class
 get_class($this) value: Actual_Class
 get_class() value: Definition_Class
-Actual_Class
+
