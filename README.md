@@ -153,4 +153,18 @@ __CLASS__ value: Definition_Class
 get_called_class() value: Actual_Class
 get_class($this) value: Actual_Class
 get_class() value: Definition_Class
+```
 
+### (4) JSON_FORCE_OBJECT
+```php
+$json = json_encode([0 => 'foo', 2 => 'bar']);
+var_dump($json); // string(21) "{"0":"foo","2":"bar"}"
+
+// An array with ordered indexes will be array by default
+$json = json_encode([0 => 'foo', 1 => 'bar']);
+var_dump($json); // string(13) "["foo","bar"]"
+
+// JSON_FORCE_OBJECT will make it an object
+$json = json_encode([0 => 'foo', 1 => 'bar'], JSON_FORCE_OBJECT);
+var_dump($json); // string(21) "{"0":"foo","1":"bar"}"
+```
